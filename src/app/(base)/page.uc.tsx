@@ -29,7 +29,12 @@ export default function HomeClient() {
       <div>
         {me ? (
           <p>
-            Hi {me.firstName}, it turns out you're in {me.location[0].city} 😯
+            Hi {me.firstName}, it turns out youre in 
+            {
+              //@ts-ignore
+              me.location[0].city
+            }
+            😯
           </p>
         ) : (
           <p>Loading...</p>
