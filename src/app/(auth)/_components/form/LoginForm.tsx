@@ -82,6 +82,19 @@ export default function LoginForm() {
           <h2 className={styles.title}>Log in</h2>
 
           <div className={styles.inputs_container}>
+            <a href={`${googleOAuthUrl}`}>
+              <Button load={isLoading} type="button" style="google">
+                <GoogleSvg style={{ fontSize: "1.2rem" }} /> Continue with
+                Google
+              </Button>
+            </a>
+
+            <div className={styles.devider}>
+              <hr />
+              <span>or</span>
+              <hr />
+            </div>
+
             <div className={styles.input_container}>
               <span className={styles.label}>Email address or name</span>
 
@@ -169,23 +182,16 @@ export default function LoginForm() {
               Continue with email or name
             </Button>
 
-            <div className={styles.devider}>
-              <hr />
-              <span>or</span>
-              <hr />
-            </div>
-
-            <a href={`${googleOAuthUrl}`}>
-              <Button load={isLoading} type="button" style="google">
-                <GoogleSvg style={{ fontSize: "1.2rem" }} /> Continue with
-                Google
-              </Button>
-            </a>
-
             <Link className={styles.link} href="/password/forgot">
               Forgot password?
             </Link>
           </div>
+
+          <span className={styles.info}>
+            By clicking “Continue with Google/Email” above, you acknowledge that
+            you have read and understood, and agree to Jarvis GPT's Terms &
+            Conditions and Privacy Policy.
+          </span>
         </form>
       </div>
     </>

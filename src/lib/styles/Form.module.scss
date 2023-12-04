@@ -37,7 +37,7 @@
     .title {
       text-align: center;
 
-      font-size: 1.55rem;
+      font-size: 2.55rem;
       font-weight: 600;
       color: rgb(55, 53, 47);
     }
@@ -52,7 +52,7 @@
       text-align: center;
       text-decoration: underline;
 
-      font-size: 0.875rem;
+      font-size: 0.825rem;
       font-weight: 400;
       color: rgba(55, 53, 47, 0.65);
     }
@@ -79,6 +79,14 @@
         font-weight: 400;
         color: rgba(55, 53, 47, 0.65);
       }
+    }
+
+    .info {
+      text-align: center;
+
+      font-size: 0.725rem;
+      font-weight: 400;
+      color: rgba(55, 53, 47, 0.665);
     }
 
     .inputs_container {

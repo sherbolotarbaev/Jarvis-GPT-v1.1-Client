@@ -8,7 +8,7 @@ interface Props {
 
 export default function RootLayoutClient({ children }: Props) {
   return (
-    <main>
+    <main style={{ width: "100vw", height: "100vh", minWidth: "350px" }}>
       {children} <Toaster richColors />
     </main>
   );

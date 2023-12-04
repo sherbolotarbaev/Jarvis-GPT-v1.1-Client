@@ -1,0 +1,64 @@
+.account {
+  width: 100%;
+  max-width: 350px;
+
+  padding: 0.45rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+
+  border-radius: 3.875rem;
+
+  .logo_wrapper {
+    width: 55px;
+    height: 55px;
+
+    background: rgba(242, 241, 238, 0.6);
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    .logo {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+  }
+
+  .info_wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .name {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+
+      .full_name {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: rgb(55, 53, 47);
+      }
+
+      .username {
+        padding: 0.25rem 0.55rem;
+
+        background: rgba(255, 191, 0, 0.572);
+        border-radius: 0.85rem;
+
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: rgb(55, 53, 47);
+      }
+    }
+
+    .email {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(55, 53, 47, 0.665);
+    }
+  }
+}
