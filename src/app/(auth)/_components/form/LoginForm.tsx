@@ -38,7 +38,7 @@ export default function LoginForm() {
     formState: { errors, isValid },
   } = useForm<FormData>();
 
-  const emailOrName = watch("emailOrUsername");
+  const emailOrUsername = watch("emailOrUsername");
   const password = watch("password");
 
   const handleClearInput = (name: keyof FormData) => {
@@ -73,7 +73,7 @@ export default function LoginForm() {
     };
 
     getCookieEmail();
-  }, [setValue, getCookieValue]);
+  }, [setValue]);
 
   return (
     <>
@@ -120,7 +120,7 @@ export default function LoginForm() {
                   className={styles.clear}
                   onClick={() => handleClearInput("emailOrUsername")}
                   style={
-                    !isLoading && emailOrName && emailOrName.length > 0
+                    !isLoading && emailOrUsername && emailOrUsername.length > 0
                       ? { fontSize: "1.1rem", fill: "#fff" }
                       : { display: "none" }
                   }
@@ -189,7 +189,7 @@ export default function LoginForm() {
 
           <span className={styles.info}>
             By clicking “Continue with Google/Email” above, you acknowledge that
-            you have read and understood, and agree to Jarvis GPT's Terms &
+            you have read and understood, and agree to {"Jarvis GPT's"} Terms &
             Conditions and Privacy Policy.
           </span>
         </form>
