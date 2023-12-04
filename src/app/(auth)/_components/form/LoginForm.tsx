@@ -96,7 +96,7 @@ export default function LoginForm() {
             </div>
 
             <div className={styles.input_container}>
-              <span className={styles.label}>Email address or name</span>
+              <span className={styles.label}>Email address or username</span>
 
               <div className={styles.input_wrapper}>
                 <input

@@ -40,7 +40,7 @@ export default function Account() {
                 height={50}
               />
             ) : (
-              <div className={styles.logo}></div>
+              <div className={styles.logo}>{me.firstName[0]}</div>
             )}
           </div>
 
