@@ -74,8 +74,8 @@ export default function ForgotForm() {
           <h2 className={styles.title}>Forgot Password?</h2>
 
           <span className={styles.info}>
-            Enter the email address you used when you joined and we'll send you
-            a link to reset your password.
+            Enter the email address you used when you joined and we will send
+            you a link to reset your password.
           </span>
 
           <div className={styles.inputs_container}>
