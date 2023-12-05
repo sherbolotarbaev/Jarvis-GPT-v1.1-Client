@@ -5,3 +5,4 @@ export { default as LogoutSvg } from "./logout.svg";
 export { default as MailSvg } from "./mail.svg";
 export { default as VerifySvg } from "./logout.svg";
 export { default as GoogleSvg } from "./google.svg";
+export { default as GitHubSvg } from "./github.svg";

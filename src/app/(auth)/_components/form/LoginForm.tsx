@@ -11,7 +11,7 @@ import {
   successNotification,
 } from "@/lib/utils/notification";
 import Button from "@/lib/components/Button";
-import { CloseSvg, GoogleSvg } from "@/lib/assets/svg";
+import { CloseSvg, GitHubSvg, GoogleSvg } from "@/lib/assets/svg";
 import styles from "@/lib/styles/Form.module.scss";
 
 type FormData = {
@@ -22,6 +22,7 @@ type FormData = {
 type IsLoading = {
   withEmailOrUsername: boolean;
   withGoogle: boolean;
+  withGitHub: boolean;
 };
 
 export default function LoginForm() {
@@ -32,6 +33,7 @@ export default function LoginForm() {
   const [isLoading, setIsLoading] = useState<IsLoading>({
     withEmailOrUsername: false,
     withGoogle: false,
+    withGitHub: false,
   });
 
   const {
@@ -67,6 +69,28 @@ export default function LoginForm() {
       setIsLoading((prevLoading) => ({
         ...prevLoading,
         withGoogle: false,
+      }));
+    }
+  };
+
+  const handleGitHubOAuth = () => {
+    setIsLoading((prevLoading) => ({
+      ...prevLoading,
+      withGitHub: true,
+    }));
+
+    try {
+      window.open(
+        `${process.env.NEXT_PUBLIC_API_URL}/github/callback`,
+        "_self"
+      );
+    } catch (e: any) {
+      errorNotification("Something went wrong");
+      console.error(e);
+    } finally {
+      setIsLoading((prevLoading) => ({
+        ...prevLoading,
+        withGitHub: false,
       }));
     }
   };
@@ -119,9 +143,17 @@ export default function LoginForm() {
             <Button
               load={isLoading.withGoogle}
               type="button"
-              style="google"
+              style="white"
               onClick={handleGoogleOAuth}>
               <GoogleSvg style={{ fontSize: "1.2rem" }} /> Continue with Google
+            </Button>
+
+            <Button
+              load={isLoading.withGitHub}
+              type="button"
+              style="white"
+              onClick={handleGitHubOAuth}>
+              <GitHubSvg style={{ fontSize: "1.38rem" }} /> Continue with GitHub
             </Button>
 
             <div className={styles.devider}>

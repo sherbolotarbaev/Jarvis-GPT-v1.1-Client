@@ -15,7 +15,7 @@ interface ButtonProps {
 }
 
 type TStyles = {
-  google: string;
+  white: string;
 };
 
 type TTypes = {

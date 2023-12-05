@@ -57,7 +57,7 @@ export async function middleware(request: NextRequest) {
       pathname.startsWith("/password/forgot") ||
       pathname.startsWith("/password/reset"))
   ) {
-    const redirectUrl = new URL(next, url);
+    const redirectUrl = new URL(`/redirect?to=${next}`, url);
     return NextResponse.redirect(redirectUrl);
   }
 
