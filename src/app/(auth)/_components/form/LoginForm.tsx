@@ -19,16 +19,20 @@ type FormData = {
   password: string;
 };
 
+type IsLoading = {
+  withEmailOrUsername: boolean;
+  withGoogle: boolean;
+};
+
 export default function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const next = searchParams.get("next") || "/";
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const googleOAuthUrl = new URL(
-    `${process.env.NEXT_PUBLIC_API_URL}/google/callback`
-  );
+  const [isLoading, setIsLoading] = useState<IsLoading>({
+    withEmailOrUsername: false,
+    withGoogle: false,
+  });
 
   const {
     register,
@@ -45,8 +49,33 @@ export default function LoginForm() {
     setValue(name, "");
   };
 
+  const handleGoogleOAuth = () => {
+    setIsLoading((prevLoading) => ({
+      ...prevLoading,
+      withGoogle: true,
+    }));
+
+    try {
+      window.open(
+        `${process.env.NEXT_PUBLIC_API_URL}/google/callback`,
+        "_self"
+      );
+    } catch (e: any) {
+      errorNotification("Something went wrong");
+      console.error(e);
+    } finally {
+      setIsLoading((prevLoading) => ({
+        ...prevLoading,
+        withGoogle: false,
+      }));
+    }
+  };
+
   const handleSubmitForm: SubmitHandler<FormData> = async (formData) => {
-    setIsLoading(true);
+    setIsLoading((prevLoading) => ({
+      ...prevLoading,
+      withEmailOrUsername: true,
+    }));
 
     try {
       const data: User = await API.auth.logIn(formData);
@@ -59,7 +88,10 @@ export default function LoginForm() {
       errorNotification("Something went wrong");
       console.error(e);
     } finally {
-      setIsLoading(false);
+      setIsLoading((prevLoading) => ({
+        ...prevLoading,
+        withEmailOrUsername: false,
+      }));
     }
   };
 
@@ -79,15 +111,18 @@ export default function LoginForm() {
     <>
       <div className={styles.form_wrapper}>
         <form className={styles.form} onSubmit={handleSubmit(handleSubmitForm)}>
-          <h2 className={styles.title}>Log in</h2>
+          <h2 className={styles.title}>
+            Log in to <span>Jarvis GPT</span>
+          </h2>
 
           <div className={styles.inputs_container}>
-            <a href={`${googleOAuthUrl}`}>
-              <Button load={isLoading} type="button" style="google">
-                <GoogleSvg style={{ fontSize: "1.2rem" }} /> Continue with
-                Google
-              </Button>
-            </a>
+            <Button
+              load={isLoading.withGoogle}
+              type="button"
+              style="google"
+              onClick={handleGoogleOAuth}>
+              <GoogleSvg style={{ fontSize: "1.2rem" }} /> Continue with Google
+            </Button>
 
             <div className={styles.devider}>
               <hr />
@@ -101,16 +136,18 @@ export default function LoginForm() {
               <div className={styles.input_wrapper}>
                 <input
                   type="text"
-                  disabled={isLoading}
+                  disabled={isLoading.withEmailOrUsername}
                   className={
-                    isLoading ? `${styles.input} ${styles.load}` : styles.input
+                    isLoading.withEmailOrUsername
+                      ? `${styles.input} ${styles.load}`
+                      : styles.input
                   }
                   placeholder="Enter your email address or username..."
                   {...register("emailOrUsername", {
                     required: "Email address or username required",
                     pattern: {
                       value:
-                        /^[\p{L}\d]+@[A-Za-z\d.-]+\.[A-Za-z]{2,}$|^[\p{L}\d\s]+$/u,
+                        /^(?:[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}|[a-zA-Z0-9_-]+)$/,
                       message: "Invalid email adress or userame",
                     },
                   })}
@@ -120,7 +157,9 @@ export default function LoginForm() {
                   className={styles.clear}
                   onClick={() => handleClearInput("emailOrUsername")}
                   style={
-                    !isLoading && emailOrUsername && emailOrUsername.length > 0
+                    !isLoading.withEmailOrUsername &&
+                    emailOrUsername &&
+                    emailOrUsername.length > 0
                       ? { fontSize: "1.1rem", fill: "#fff" }
                       : { display: "none" }
                   }
@@ -140,10 +179,10 @@ export default function LoginForm() {
               <div className={styles.input_wrapper}>
                 <input
                   type="password"
-                  disabled={isLoading}
+                  disabled={isLoading.withEmailOrUsername}
                   autoComplete="off"
                   className={
-                    isLoading
+                    isLoading.withEmailOrUsername
                       ? `${styles.input} ${styles.load} ${styles.password}`
                       : `${styles.input} ${styles.password}`
                   }
@@ -166,7 +205,9 @@ export default function LoginForm() {
                   className={styles.clear}
                   onClick={() => handleClearInput("password")}
                   style={
-                    !isLoading && password && password.length > 0
+                    !isLoading.withEmailOrUsername &&
+                    password &&
+                    password.length > 0
                       ? { fontSize: "1.1rem", fill: "#fff" }
                       : { display: "none" }
                   }
@@ -178,8 +219,11 @@ export default function LoginForm() {
               )}
             </div>
 
-            <Button load={isLoading} type="submit" disabled={!isValid}>
-              Continue with email or name
+            <Button
+              load={isLoading.withEmailOrUsername}
+              type="submit"
+              disabled={!isValid}>
+              Continue with email or username
             </Button>
 
             <Link className={styles.link} href="/password/forgot">

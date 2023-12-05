@@ -41,12 +41,22 @@ export async function middleware(request: NextRequest) {
 
   const isAuth = user !== undefined;
 
-  if (isAuth && pathname.startsWith("/login")) {
+  if (
+    isAuth &&
+    (pathname.startsWith("/login") ||
+      pathname.startsWith("/password/forgot") ||
+      pathname.startsWith("/password/reset"))
+  ) {
     const redirectUrl = new URL(next, url);
     return NextResponse.redirect(redirectUrl);
   }
 
-  if (!isAuth && pathname !== "/login") {
+  if (
+    !isAuth &&
+    pathname !== "/login" &&
+    pathname !== "/password/forgot" &&
+    pathname !== "/password/reset"
+  ) {
     const redirectUrl = new URL(
       pathname !== "/" ? `/login?next=${pathname}` : "/login",
       url

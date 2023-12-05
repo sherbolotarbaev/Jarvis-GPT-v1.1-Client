@@ -66,12 +66,29 @@
   }
 
   &.google {
-    background: rgba(242, 241, 238, 0.6);
+    background: rgba(255, 255, 255, 0.6);
     box-shadow: rgb(15 15 15 / 10%) 0px 0px 0px 1px inset;
 
     font-size: 0.875rem;
     font-weight: 500;
     color: rgb(55, 53, 47);
+
+    &:hover {
+      background: rgba(233, 232, 229, 0.6);
+    }
+
+    &:active {
+      background: rgba(220, 219, 215, 0.6);
+    }
+
+    &.disabled {
+      background: #f6f6f62e;
+
+      &:hover,
+      &:active {
+        background: #f6f6f62e;
+      }
+    }
   }
 }
 

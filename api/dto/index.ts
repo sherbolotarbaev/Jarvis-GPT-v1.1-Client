@@ -1,1 +1,1 @@
-export type { LoginDto } from "./auth.dto";
+export type { LoginDto, ForgotPasswordDto, ResetPasswordDto } from "./auth.dto";

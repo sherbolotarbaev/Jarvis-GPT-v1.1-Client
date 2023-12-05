@@ -1,14 +1,14 @@
 "use client";
 
-import LoginForm from "../_components/form/LoginForm";
+import ForgotForm from "../../_components/form/ForgotForm";
 import styles from "@/lib/styles/Auth.module.scss";
 
-export default function LoginClient() {
+export default function ForgotClient() {
   return (
     <>
       <div className={styles.page_wrapper}>
         <div className={styles.left}>
-          <LoginForm />
+          <ForgotForm />
         </div>
 
         <div className={styles.right}>

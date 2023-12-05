@@ -1,73 +1,96 @@
-.account {
+.account_wrapper {
   width: 100%;
-  max-width: 390px;
 
-  padding: 0.45rem;
+  padding: 0.85rem;
 
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 0.55rem;
 
-  border-radius: 3.875rem;
+  background: #fffefc;
 
-  .logo_wrapper {
-    width: 55px;
-    height: 55px;
+  .account {
+    padding: 0.45rem;
 
-    background: rgba(242, 241, 238, 0.6);
-    border-radius: 50%;
-
-    overflow: hidden;
-
-    .logo {
-      width: 100%;
-      height: 100%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      object-fit: cover;
-
-      font-size: 1.55rem;
-      font-weight: 600;
-      color: rgb(55, 53, 47);
-    }
-  }
-
-  .info_wrapper {
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
 
-    .name {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
+    border-radius: 0.385rem;
 
-      .full_name {
-        font-size: 1.05rem;
+    @media (max-width: 565px) {
+      flex-direction: column;
+    }
+
+    .logo_wrapper {
+      width: 55px;
+      height: 55px;
+
+      background: rgba(242, 241, 238, 0.6);
+      border-radius: 50%;
+
+      overflow: hidden;
+
+      .logo {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        object-fit: cover;
+
+        font-size: 1.55rem;
         font-weight: 600;
         color: rgb(55, 53, 47);
       }
+    }
 
-      .username {
-        padding: 0.25rem 0.55rem;
+    .info_wrapper {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
 
-        background: rgba(255, 191, 0, 0.572);
-        border-radius: 0.85rem;
+      .name {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
 
+        .full_name {
+          font-size: 1.05rem;
+          font-weight: 600;
+          color: rgb(55, 53, 47);
+        }
+
+        .username {
+          padding: 0.25rem 0.55rem;
+
+          background: rgba(255, 191, 0, 0.572);
+          border-radius: 0.85rem;
+
+          font-size: 0.875rem;
+          font-weight: 500;
+          color: rgb(55, 53, 47);
+        }
+      }
+
+      .email,
+      .nationality {
         font-size: 0.875rem;
         font-weight: 500;
-        color: rgb(55, 53, 47);
+        color: rgba(55, 53, 47, 0.665);
       }
     }
 
-    .email,
-    .nationality {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: rgba(55, 53, 47, 0.665);
+    .button_wrapper {
+      width: 100%;
+      max-width: 150px;
+
+      @media (max-width: 565px) {
+        max-width: 258px;
+      }
     }
   }
 }

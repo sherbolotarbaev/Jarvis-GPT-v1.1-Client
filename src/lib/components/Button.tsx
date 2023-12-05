@@ -49,7 +49,15 @@ export default function Button({
     }
 
     if (typeof load === "string") {
-      return load;
+      return (
+        <>
+          <LoadSvg
+            className={styles.load}
+            style={!style ? { fill: "rgb(235, 87, 87)" } : undefined}
+          />
+          {load}
+        </>
+      );
     }
 
     return children;

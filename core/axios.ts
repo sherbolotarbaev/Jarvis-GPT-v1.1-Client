@@ -12,9 +12,7 @@ const createAxiosInstance = () => {
     const session = await getCookieValue("session");
 
     if (session) {
-      config.headers.Cookie = `session=${encodeURIComponent(
-        session
-      )}; Secure; SameSite=None;`;
+      config.headers.Cookie = `session=${encodeURIComponent(session)};`;
     }
 
     return config;
