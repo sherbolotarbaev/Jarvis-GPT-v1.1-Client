@@ -34,7 +34,7 @@
 
     border-radius: 0.385rem;
 
-    @media (max-width: 565px) {
+    @media (max-width: 665px) {
       flex-direction: column;
     }
 
@@ -103,7 +103,7 @@
       width: 100%;
       max-width: 150px;
 
-      @media (max-width: 565px) {
+      @media (max-width: 665px) {
         max-width: 258px;
       }
     }
