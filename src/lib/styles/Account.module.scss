@@ -9,6 +9,21 @@
 
   background: #fffefc;
 
+  .load {
+    font-size: 1rem;
+
+    animation: rotateAnimation 0.9s infinite linear;
+
+    @keyframes rotateAnimation {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
   .account {
     padding: 0.45rem;
 
@@ -77,7 +92,7 @@
       }
 
       .email,
-      .nationality {
+      .phone {
         font-size: 0.875rem;
         font-weight: 500;
         color: rgba(55, 53, 47, 0.665);

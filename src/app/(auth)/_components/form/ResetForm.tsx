@@ -92,13 +92,13 @@ export default function ResetForm() {
                   {...register("password", {
                     required: "Password required",
                     minLength: {
-                      value: 6,
-                      message: "Password must contain at least 6 characters",
+                      value: 8,
+                      message: "Password must contain at least 8 characters",
                     },
                     maxLength: {
-                      value: 24,
+                      value: 16,
                       message:
-                        "Password cannot contain more than 24 characters",
+                        "Password cannot contain more than 16 characters",
                     },
                   })}
                 />
@@ -133,13 +133,13 @@ export default function ResetForm() {
                   {...register("confirmPassword", {
                     required: "Please confirm your password",
                     minLength: {
-                      value: 6,
-                      message: "Password must contain at least 6 characters",
+                      value: 8,
+                      message: "Password must contain at least 8 characters",
                     },
                     maxLength: {
-                      value: 24,
+                      value: 16,
                       message:
-                        "Password cannot contain more than 24 characters",
+                        "Password cannot contain more than 16 characters",
                     },
                   })}
                 />

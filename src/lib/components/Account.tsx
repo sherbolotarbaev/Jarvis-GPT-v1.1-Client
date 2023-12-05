@@ -6,7 +6,7 @@ import * as API from "@/../api";
 import Image from "next/image";
 import { errorNotification } from "@/lib/utils/notification";
 import Button from "./Button";
-import { LogoutSvg } from "../assets/svg";
+import { LoadSvg, LogoutSvg } from "../assets/svg";
 import styles from "@/lib/styles/Account.module.scss";
 
 export default function Account() {
@@ -75,6 +75,8 @@ export default function Account() {
               </div>
 
               <div className={styles.email}>{me.email}</div>
+
+              {me.phone && <div className={styles.phone}>{me.phone}</div>}
             </div>
 
             <div className={styles.button_wrapper}>
@@ -89,7 +91,7 @@ export default function Account() {
             </div>
           </div>
         ) : (
-          <span>Loading...</span>
+          <LoadSvg className={styles.load} />
         )}
       </div>
     </>

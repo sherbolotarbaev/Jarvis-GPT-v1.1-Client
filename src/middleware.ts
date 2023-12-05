@@ -41,6 +41,16 @@ export async function middleware(request: NextRequest) {
 
   const isAuth = user !== undefined;
 
+  if (isAuth && !user?.isVerified && pathname !== "/email-verification") {
+    const redirectUrl = new URL("/email-verification", url);
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  if (isAuth && user?.isVerified && pathname === "/email-verification") {
+    const redirectUrl = new URL("/", url);
+    return NextResponse.redirect(redirectUrl);
+  }
+
   if (
     isAuth &&
     (pathname.startsWith("/login") ||
