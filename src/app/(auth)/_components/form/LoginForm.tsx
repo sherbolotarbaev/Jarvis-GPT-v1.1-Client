@@ -264,9 +264,9 @@ export default function LoginForm() {
           </div>
 
           <span className={styles.info}>
-            By clicking “Continue with Google/Email” above, you acknowledge that
-            you have read and understood, and agree to {"Jarvis GPT's"} Terms &
-            Conditions and Privacy Policy.
+            By clicking “Continue with Google/GitHub/Email” above, you
+            acknowledge that you have read and understood, and agree to
+            {" Jarvis GPT's "}Terms & Conditions and Privacy Policy.
           </span>
         </form>
       </div>
