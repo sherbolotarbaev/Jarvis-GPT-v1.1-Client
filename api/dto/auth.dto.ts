@@ -3,6 +3,10 @@ export interface LoginDto {
   password: string;
 }
 
+export interface EmailVerificationDto {
+  code: string;
+}
+
 export interface ForgotPasswordDto {
   email: string;
 }

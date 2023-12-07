@@ -49,7 +49,12 @@ export default function VerificationForm() {
     setIsLoading(true);
 
     try {
-      console.log(formData)
+      const data = await API.auth.emailVerification(formData);
+
+      if (data.success) {
+        successNotification("Successfully verified");
+        router.push("/");
+      }
     } catch (e: any) {
       errorNotification("Something went wrong");
       console.error(e);
@@ -115,7 +120,7 @@ export default function VerificationForm() {
             </div>
 
             <Button type="submit" load={isLoading} disabled={!isValid}>
-              Submit
+              Continue
             </Button>
 
             <span className={styles.link} onClick={handleLogout}>
