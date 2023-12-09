@@ -8,8 +8,8 @@ const createAxiosInstance = () => {
     timeout: 15000,
   });
 
-  instance.interceptors.request.use(async (config) => {
-    const session = await getCookieValue("session");
+  instance.interceptors.request.use((config) => {
+    const session = getCookieValue("session");
 
     if (session) {
       config.headers.Cookie = `session=${encodeURIComponent(session)}`;

@@ -48,7 +48,7 @@ export default function ForgotForm() {
         router.push("/login");
       }
     } catch (e: any) {
-      errorNotification("Something went wrong");
+      errorNotification(e.msg || "Something went wrong");
       console.error(e);
     } finally {
       setIsLoading(false);

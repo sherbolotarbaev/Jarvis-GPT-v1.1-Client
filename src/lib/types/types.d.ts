@@ -24,6 +24,7 @@ type User = {
   lastVisit: string;
   createdAt: string;
   updatedAt: string;
+  [key: string]: string | undefined;
 };
 
 type Location = {

@@ -29,6 +29,7 @@ export async function middleware(request: NextRequest) {
       if (responseData.statusCode !== 401) {
         user = responseData;
         responseCookies.set("email", responseData.email);
+        responseCookies.set("isLoggedIn", "true");
       } else {
         requestCookies.getAll().map((cookie) => {
           if (cookie.name !== "email") {
@@ -37,6 +38,8 @@ export async function middleware(request: NextRequest) {
         });
       }
     } catch (_) {}
+  } else {
+    responseCookies.delete("isLoggedIn");
   }
 
   const isAuth = user !== undefined;

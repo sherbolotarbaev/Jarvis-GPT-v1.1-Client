@@ -76,7 +76,7 @@ export default function Button({
       type={type}
       disabled={load === true || disabled}
       onClick={onClick ? onClick : () => redirect && redirectToPage(redirect)}
-      className={buttonClassName}>
+      className={load ? styles.button_load : buttonClassName}>
       {renderButtonContent()}
     </button>
   );

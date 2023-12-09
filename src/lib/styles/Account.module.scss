@@ -1,16 +1,20 @@
 .account_wrapper {
   width: 100%;
+  max-width: 520px;
 
   padding: 0.85rem;
+  margin: 0 auto;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 0.65rem;
 
   background: #fffefc;
 
   .load {
-    font-size: 1rem;
+    font-size: 1.55rem;
 
     animation: rotateAnimation 0.9s infinite linear;
 
@@ -25,22 +29,26 @@
   }
 
   .account {
+    width: 100%;
+
     padding: 0.45rem;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 0.55rem;
 
     border-radius: 0.385rem;
 
-    @media (max-width: 665px) {
-      flex-direction: column;
+    @media (max-width: 515px) {
+      flex-direction: column-reverse;
     }
 
     .logo_wrapper {
-      width: 55px;
-      height: 55px;
+      width: 80px;
+      height: 80px;
+
+      margin-bottom: auto;
 
       background: rgba(242, 241, 238, 0.6);
       border-radius: 50%;
@@ -67,45 +75,69 @@
       display: flex;
       justify-content: center;
       flex-direction: column;
+      gap: 1.25rem;
 
-      .name {
+      .info {
         display: flex;
-        align-items: center;
-        gap: 0.25rem;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.15rem;
 
-        .full_name {
-          font-size: 1.05rem;
-          font-weight: 600;
-          color: rgb(55, 53, 47);
+        .name {
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+
+          .full_name {
+            font-size: 1.45rem;
+            font-weight: 600;
+            color: rgb(55, 53, 47);
+          }
+
+          .username {
+            padding: 0.25rem 0.55rem;
+
+            background: rgba(255, 191, 0, 0.572);
+            box-shadow: rgb(15 15 15 / 10%) 0px 0px 0px 1px inset;
+            border-radius: 0.85rem;
+
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: rgb(55, 53, 47);
+          }
         }
 
-        .username {
-          padding: 0.25rem 0.55rem;
+        .contact {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          gap: 0.15rem;
 
-          background: rgba(255, 191, 0, 0.572);
-          border-radius: 0.85rem;
-
-          font-size: 0.875rem;
-          font-weight: 500;
-          color: rgb(55, 53, 47);
+          .email,
+          .phone {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: rgba(55, 53, 47, 0.665);
+          }
         }
       }
 
-      .email,
-      .phone {
+      .bio {
+        width: 100%;
+        max-width: 300px;
+
         font-size: 0.875rem;
         font-weight: 500;
-        color: rgba(55, 53, 47, 0.665);
+        color: #86868b;
       }
     }
+  }
 
-    .button_wrapper {
-      width: 100%;
-      max-width: 150px;
+  .button_wrapper {
+    width: 100%;
 
-      @media (max-width: 665px) {
-        max-width: 258px;
-      }
+    @media (max-width: 515px) {
+      max-width: 310px;
     }
   }
 }

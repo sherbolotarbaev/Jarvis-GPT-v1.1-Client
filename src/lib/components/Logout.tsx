@@ -15,7 +15,7 @@ export default function Logout() {
     try {
       await API.auth.logOut();
     } catch (e: any) {
-      errorNotification("Failed to log out");
+      errorNotification(e.msg || "Failed to log out");
       console.error(e);
     } finally {
       setIsLoading(false);

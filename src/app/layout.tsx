@@ -1,5 +1,6 @@
 import RootLayoutClient from "./layout.uc";
 import type { Metadata } from "next";
+import { UserProvider } from "@/lib/providers/UserProvider";
 import { siteConfig } from "../../config/site";
 import { Inter } from "next/font/google";
 import "@/lib/styles/global.scss";
@@ -21,7 +22,9 @@ export default async function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <body className={font.className}>
-        <RootLayoutClient>{children}</RootLayoutClient>
+        <UserProvider>
+          <RootLayoutClient>{children}</RootLayoutClient>
+        </UserProvider>
       </body>
     </html>
   );

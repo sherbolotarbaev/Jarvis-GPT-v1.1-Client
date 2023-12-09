@@ -40,7 +40,7 @@ export default function VerificationForm() {
       await API.auth.logOut();
       router.push("/login");
     } catch (e: any) {
-      errorNotification("Something went wrong");
+      errorNotification(e.msg || "Something went wrong");
       console.error(e);
     }
   };
@@ -56,7 +56,7 @@ export default function VerificationForm() {
         router.push("/");
       }
     } catch (e: any) {
-      errorNotification("Something went wrong");
+      errorNotification(e.msg || "Something went wrong");
       console.error(e);
     } finally {
       setIsLoading(false);

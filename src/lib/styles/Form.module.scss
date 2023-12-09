@@ -1,23 +1,22 @@
 .form_wrapper {
   width: 100%;
 
-  max-width: 400px;
+  max-width: 350px;
+  min-width: 350px;
 
-  padding: 3.55rem 0.85rem 2.455rem 0.85rem;
+  padding: 0.85rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   background: #fffefc;
-  box-shadow: rgb(0 0 0 / 06%) 0px 24px 48px;
   border-radius: 0.665rem;
 
   transition: 0.25s;
 
   @media (max-width: 525px) {
     height: 100%;
-    max-width: 100%;
 
     border-radius: 0;
     box-shadow: 0 0 0 transparent;
@@ -27,8 +26,6 @@
     width: 100%;
     height: 100%;
 
-    max-width: 320px;
-
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -36,6 +33,11 @@
 
     .title {
       text-align: center;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
 
       font-size: 1.8rem;
       font-weight: 600;
@@ -99,6 +101,12 @@
       display: flex;
       flex-direction: column;
       gap: 0.975rem;
+
+      .cupple {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+      }
 
       .input_container {
         width: 100%;
@@ -165,6 +173,17 @@
               &::placeholder {
                 letter-spacing: normal;
               }
+            }
+
+            &.textarea {
+              max-width: 100%;
+              min-width: 100%;
+              min-height: 90px;
+              max-height: 300px;
+
+              resize: vertical;
+
+              font-family: sans-serif;
             }
           }
 

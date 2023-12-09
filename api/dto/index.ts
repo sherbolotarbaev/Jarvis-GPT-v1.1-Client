@@ -1,5 +1,6 @@
 export type {
   LoginDto,
+  EditMeDto,
   EmailVerificationDto,
   ForgotPasswordDto,
   ResetPasswordDto,

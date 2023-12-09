@@ -109,7 +109,7 @@ export default function LoginForm() {
         router.push(next);
       }
     } catch (e: any) {
-      errorNotification("Something went wrong");
+      errorNotification(e.msg || "Something went wrong");
       console.error(e);
     } finally {
       setIsLoading((prevLoading) => ({
@@ -252,7 +252,7 @@ export default function LoginForm() {
             </div>
 
             <Button
-              load={isLoading.withEmailOrUsername}
+              load={isLoading.withEmailOrUsername ? "Logging in..." : false}
               type="submit"
               disabled={!isValid}>
               Continue with email or username

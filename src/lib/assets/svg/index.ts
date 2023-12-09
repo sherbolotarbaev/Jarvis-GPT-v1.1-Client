@@ -6,3 +6,8 @@ export { default as MailSvg } from "./mail.svg";
 export { default as VerifySvg } from "./logout.svg";
 export { default as GoogleSvg } from "./google.svg";
 export { default as GitHubSvg } from "./github.svg";
+export { default as DotsSvg } from "./dots.svg";
+export { default as SettingsSvg } from "./settings.svg";
+export { default as UserSvg } from "./user.svg";
+export { default as ChatSvg } from "./chat.svg";
+export { default as HistorySvg } from "./history.svg";
