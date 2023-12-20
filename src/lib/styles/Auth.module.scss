@@ -31,6 +31,45 @@
 
       border-right: 0;
     }
+
+    .info {
+      width: 100%;
+
+      padding: 1.2rem 0.85rem;
+      margin: 0 0.85rem;
+
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 1rem;
+
+      background: rgba(249, 204, 204, 0.6);
+      box-shadow: rgb(15 15 15 / 10%) 0px 0px 0px 1px inset;
+      border-radius: 0.665rem;
+
+      .title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: rgb(55, 53, 47);
+      }
+
+      .desc {
+        font-size: 1rem;
+        font-weight: 400;
+        color: rgba(55, 53, 47, 0.665);
+      }
+
+      .link {
+        cursor: pointer;
+
+        text-align: center;
+        text-decoration: underline;
+
+        font-size: 0.875rem;
+        font-weight: 400;
+        color: rgba(55, 53, 47, 0.65);
+      }
+    }
   }
 
   .right {

@@ -58,7 +58,8 @@ export async function middleware(request: NextRequest) {
     isAuth &&
     (pathname.startsWith("/login") ||
       pathname.startsWith("/password/forgot") ||
-      pathname.startsWith("/password/reset"))
+      pathname.startsWith("/password/reset") ||
+      pathname.startsWith("/deactivated"))
   ) {
     const redirectUrl = new URL(`/redirect?to=${next}`, url);
     return NextResponse.redirect(redirectUrl);
@@ -68,7 +69,8 @@ export async function middleware(request: NextRequest) {
     !isAuth &&
     pathname !== "/login" &&
     pathname !== "/password/forgot" &&
-    pathname !== "/password/reset"
+    pathname !== "/password/reset" &&
+    pathname !== "/deactivated"
   ) {
     const redirectUrl = new URL(
       pathname !== "/" ? `/login?next=${pathname}` : "/login",
