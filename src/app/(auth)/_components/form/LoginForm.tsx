@@ -58,10 +58,12 @@ export default function LoginForm() {
     }));
 
     try {
-      window.open(
-        `${process.env.NEXT_PUBLIC_API_URL}/google/callback`,
-        "_self"
-      );
+      if (isLoading.withGoogle === true) {
+        window.open(
+          `${process.env.NEXT_PUBLIC_API_URL}/google/callback`,
+          "_self"
+        );
+      }
     } catch (e: any) {
       errorNotification("Something went wrong");
       console.error(e);
@@ -80,10 +82,12 @@ export default function LoginForm() {
     }));
 
     try {
-      window.open(
-        `${process.env.NEXT_PUBLIC_API_URL}/github/callback`,
-        "_self"
-      );
+      if (isLoading.withGitHub === true) {
+        window.open(
+          `${process.env.NEXT_PUBLIC_API_URL}/github/callback`,
+          "_self"
+        );
+      }
     } catch (e: any) {
       errorNotification("Something went wrong");
       console.error(e);
