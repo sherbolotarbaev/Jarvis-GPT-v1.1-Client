@@ -115,6 +115,13 @@
         flex-direction: column;
         gap: 0.55rem;
 
+        .cupple {
+          width: 100%;
+
+          display: flex;
+          align-items: center;
+        }
+
         .label {
           padding: 0 0.3rem;
           margin-bottom: 0.05rem;

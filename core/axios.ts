@@ -9,10 +9,10 @@ const createAxiosInstance = () => {
   });
 
   instance.interceptors.request.use(async (config) => {
-    const session = await getCookieValue("session");
+    const accessToken = await getCookieValue("access_token");
 
-    if (session) {
-      config.headers.Cookie = `session=${encodeURIComponent(session)}`;
+    if (accessToken) {
+      config.headers.Cookie = `access_token=${encodeURIComponent(accessToken)}`;
     }
 
     return config;

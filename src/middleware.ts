@@ -9,14 +9,17 @@ export async function middleware(request: NextRequest) {
   const responseCookies = response.cookies;
   const requestCookies = request.cookies;
   const next = searchParams.get("next") || "/";
-  const session = requestCookies.get("session");
+  const accessToken = requestCookies.get("access_token");
 
   let user: User | undefined;
 
-  if (session) {
+  if (accessToken) {
     try {
       const headers = new Headers();
-      headers.append("Cookie", "session=" + encodeURIComponent(session.value));
+      headers.append(
+        "Cookie",
+        "access_token=" + encodeURIComponent(accessToken.value)
+      );
       headers.append("baseurl", `${apiUrl}`);
 
       const response = await fetch(`${apiUrl}/me`, {

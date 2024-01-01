@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import Banner from "../_components/Banner";
 import styles from "@/lib/styles/Auth.module.scss";
 
 export default function DeactivatedClient() {
@@ -19,9 +20,9 @@ export default function DeactivatedClient() {
   return (
     <>
       <div className={styles.page_wrapper}>
-        <div className={styles.left}>
+        <div className={styles.content}>
           <div className={styles.info}>
-            <h1 className={styles.title} style={{ color: "red" }}>
+            <h1 className={styles.title} style={{ color: "#ff2e2e" }}>
               Account Deactivated
             </h1>
 
@@ -37,12 +38,7 @@ export default function DeactivatedClient() {
           </div>
         </div>
 
-        <div className={styles.right}>
-          <div className={styles.title}>
-            THE FUTURE IS HERE <br />
-            <span>YOUR AI - HELPER ALWAYS WITH YOU</span>
-          </div>
-        </div>
+        <Banner />
       </div>
     </>
   );

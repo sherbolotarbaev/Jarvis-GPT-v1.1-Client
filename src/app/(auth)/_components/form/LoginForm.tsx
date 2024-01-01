@@ -130,21 +130,23 @@ export default function LoginForm() {
           </h2>
 
           <div className={styles.inputs_container}>
-            <Button
-              load={isLoading.withGoogle}
-              type="button"
-              style="white"
-              onClick={handleGoogleOAuth}>
-              <GoogleSvg style={{ fontSize: "1.2rem" }} /> Continue with Google
-            </Button>
+            <div className={styles.cupple}>
+              <Button
+                load={isLoading.withGoogle}
+                type="button"
+                style="white"
+                onClick={handleGoogleOAuth}>
+                <GoogleSvg style={{ fontSize: "1.15rem" }} />
+              </Button>
 
-            <Button
-              load={isLoading.withGitHub}
-              type="button"
-              style="white"
-              onClick={handleGitHubOAuth}>
-              <GitHubSvg style={{ fontSize: "1.38rem" }} /> Continue with GitHub
-            </Button>
+              <Button
+                load={isLoading.withGitHub}
+                type="button"
+                style="white"
+                onClick={handleGitHubOAuth}>
+                <GitHubSvg style={{ fontSize: "1.15rem" }} />
+              </Button>
+            </div>
 
             <div className={styles.devider}>
               <hr />
