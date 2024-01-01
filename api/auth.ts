@@ -5,21 +5,11 @@ import {
   ForgotPasswordDto,
   ResetPasswordDto,
 } from "./dto";
-import { getCookieValue, setCookie } from "@/lib/utils/cookies";
 import instance from "../core/axios";
 
 export const logIn = async (dto: LoginDto) => {
-  const existSession = await getCookieValue("session");
-
   try {
-    const { data } = await instance.post("/login", dto);
-    const { user, tokens } = data;
-
-    if (!existSession) {
-      await setCookie("session", `${tokens.access_token}`);
-    }
-
-    return user;
+    return (await instance.post("/login", dto)).data;
   } catch (e: any) {
     throw {
       msg: e.response.data.message,
