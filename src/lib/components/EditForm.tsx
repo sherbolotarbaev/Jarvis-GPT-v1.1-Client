@@ -22,7 +22,9 @@ type FormData = {
   [key: string]: string | undefined;
 };
 
-export default function EditForm() {
+interface Props {}
+
+export default function EditForm(props: Props) {
   const me = useMe();
   const router = useRouter();
 
@@ -49,8 +51,8 @@ export default function EditForm() {
       const data: User = await API.auth.editMe(editedFields);
 
       if (data) {
-        successNotification("Profile successfully updated");
         router.refresh();
+        successNotification("Profile successfully updated");
       }
     } catch (e: any) {
       errorNotification(e.msg || "Something went wrong");

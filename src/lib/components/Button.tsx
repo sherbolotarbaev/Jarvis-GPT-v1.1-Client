@@ -63,11 +63,7 @@ export default function Button({
     return children;
   };
 
-  const buttonClassName = [
-    styles.button,
-    style && styles[style],
-    disabled && styles.disabled,
-  ]
+  const buttonClassName = [style && styles[style], disabled && styles.disabled]
     .filter(Boolean)
     .join(" ");
 
@@ -76,7 +72,11 @@ export default function Button({
       type={type}
       disabled={load === true || disabled}
       onClick={onClick ? onClick : () => redirect && redirectToPage(redirect)}
-      className={load ? styles.button_load : buttonClassName}>
+      className={
+        load
+          ? `${styles.button_load} ${buttonClassName}`
+          : `${styles.button} ${buttonClassName}`
+      }>
       {renderButtonContent()}
     </button>
   );

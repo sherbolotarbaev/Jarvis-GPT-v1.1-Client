@@ -16,21 +16,21 @@ export const UserContext = createContext<{ me: User | null }>({
 export const UserProvider = ({ children }: Props) => {
   const [me, setMe] = useState<User | null>(null);
 
-  useEffect(() => {
-    const initializeUser = async () => {
-      try {
-        const isLoggedIn = (await getCookieValue("isLoggedIn")) === "true";
+  const initializeUser = async () => {
+    try {
+      const isLoggedIn = (await getCookieValue("isLoggedIn")) === "true";
 
-        if (isLoggedIn) {
-          const data: User = await API.auth.getMe();
-          setMe(data);
-        }
-      } catch (e: any) {
-        errorNotification(e.msg || "Something went wrong");
-        console.error(e);
+      if (isLoggedIn) {
+        const data: User = await API.auth.getMe();
+        setMe(data);
       }
-    };
+    } catch (e: any) {
+      errorNotification(e.msg || "Something went wrong");
+      console.error(e);
+    }
+  };
 
+  useEffect(() => {
     initializeUser();
   }, []);
 

@@ -58,20 +58,13 @@ export default function LoginForm() {
     }));
 
     try {
-      if (isLoading.withGoogle === true) {
-        window.open(
-          `${process.env.NEXT_PUBLIC_API_URL}/google/callback`,
-          "_self"
-        );
-      }
+      window.open(
+        `${process.env.NEXT_PUBLIC_API_URL}/google/callback`,
+        "_self"
+      );
     } catch (e: any) {
       errorNotification("Something went wrong");
       console.error(e);
-    } finally {
-      setIsLoading((prevLoading) => ({
-        ...prevLoading,
-        withGoogle: false,
-      }));
     }
   };
 
@@ -82,20 +75,13 @@ export default function LoginForm() {
     }));
 
     try {
-      if (isLoading.withGitHub === true) {
-        window.open(
-          `${process.env.NEXT_PUBLIC_API_URL}/github/callback`,
-          "_self"
-        );
-      }
+      window.open(
+        `${process.env.NEXT_PUBLIC_API_URL}/github/callback`,
+        "_self"
+      );
     } catch (e: any) {
       errorNotification("Something went wrong");
       console.error(e);
-    } finally {
-      setIsLoading((prevLoading) => ({
-        ...prevLoading,
-        withGitHub: false,
-      }));
     }
   };
 

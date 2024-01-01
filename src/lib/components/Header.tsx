@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
+import { useMe } from "../hooks/useMe";
 import Link from "next/link";
 import * as API from "@/../api";
 import { errorNotification } from "../utils/notification";
@@ -29,6 +30,7 @@ interface Links {
 }
 
 export default function Header() {
+  const me = useMe();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -165,35 +167,47 @@ export default function Header() {
               ))}
             </div>
 
-            <div className={styles.devider}>
-              <hr />
-            </div>
+            {me && (
+              <>
+                <div className={styles.devider}>
+                  <hr />
+                </div>
 
-            <div className={styles.links}>
-              <button
-                className={
-                  isLoading ? `${styles.link} ${styles.disabled}` : styles.link
-                }
-                onClick={handleLogout}
-                disabled={isLoading}>
-                {isLoading ? (
-                  <>
-                    <LoadSvg
-                      className={styles.load}
-                      style={{ fontSize: "1.15rem", fill: "rgb(55, 53, 47)" }}
-                    />
-                    Logging out...
-                  </>
-                ) : (
-                  <>
-                    <LogoutSvg
-                      style={{ fontSize: "1.15rem", fill: "rgb(55, 53, 47)" }}
-                    />
-                    Log out
-                  </>
-                )}
-              </button>
-            </div>
+                <div className={styles.links}>
+                  <button
+                    className={
+                      isLoading
+                        ? `${styles.link} ${styles.disabled}`
+                        : styles.link
+                    }
+                    onClick={handleLogout}
+                    disabled={isLoading}>
+                    {isLoading ? (
+                      <>
+                        <LoadSvg
+                          className={styles.load}
+                          style={{
+                            fontSize: "1.15rem",
+                            fill: "rgb(55, 53, 47)",
+                          }}
+                        />
+                        Logging out...
+                      </>
+                    ) : (
+                      <>
+                        <LogoutSvg
+                          style={{
+                            fontSize: "1.15rem",
+                            fill: "rgb(55, 53, 47)",
+                          }}
+                        />
+                        Log out
+                      </>
+                    )}
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
