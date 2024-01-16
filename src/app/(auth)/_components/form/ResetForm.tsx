@@ -55,7 +55,7 @@ export default function ResetForm() {
 
       if (data) {
         successNotification(data);
-        router.push("/login");
+        window.close();
       }
     } catch (e: any) {
       errorNotification(e.msg || "Something went wrong");
